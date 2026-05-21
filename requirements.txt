@@ -1,0 +1,22 @@
+# BigQuery y acceso a datos
+google-cloud-bigquery
+google-cloud-bigquery-storage
+sqlalchemy
+sqlalchemy-bigquery
+pandas
+db-dtypes
+tabulate
+
+# LangChain y LangGraph
+langchain>=1.0.0
+langchain-core>=1.0.0
+langchain-openai>=0.2.0
+langgraph>=1.0.0
+
+# Persistencia del histórico de conversación (checkpointer Postgres / Supabase)
+langgraph-checkpoint-postgres
+psycopg[binary,pool]
+
+# Interfaz y utilidades
+streamlit
+python-dotenv

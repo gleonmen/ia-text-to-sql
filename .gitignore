@@ -1,0 +1,122 @@
+# =============================================================================
+# Secrets and credentials
+# =============================================================================
+.env
+.env.*
+!.env.example
+
+# Google service accounts and local credentials
+credentials/
+!credentials/.gitkeep
+*.pem
+*.key
+*.p12
+*.pfx
+*service-account*.json
+*credentials*.json
+application_default_credentials.json
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+
+# =============================================================================
+# Python
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Build and package outputs
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+*.egg
+MANIFEST
+
+# Test and coverage outputs
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+
+# =============================================================================
+# Local databases, caches, and runtime state
+# =============================================================================
+*.db
+*.sqlite
+*.sqlite3
+*.duckdb
+.langgraph_api/
+.langchain.db
+.streamlit/cache/
+
+
+# =============================================================================
+# Logs and temporary files
+# =============================================================================
+*.log
+logs/
+*.tmp
+*.temp
+*.bak
+*.orig
+*.pid
+
+
+# =============================================================================
+# IDEs and editors
+# =============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.claude/
+
+
+# =============================================================================
+# OS files
+# =============================================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+Thumbs.db
+Desktop.ini
+
+
+# =============================================================================
+# Node and frontend tooling, if added later
+# =============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
