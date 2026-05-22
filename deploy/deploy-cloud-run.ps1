@@ -97,9 +97,19 @@ function Ensure-Secret {
     }
 
     Write-Host "Subiendo nueva version del secreto $Name" -ForegroundColor Cyan
-    $Value | gcloud secrets versions add $Name --data-file=- --project $ProjectId
-    if ($LASTEXITCODE -ne 0) {
-        throw "No se pudo subir el secreto $Name"
+    $tempSecretFile = New-TemporaryFile
+    try {
+        $utf8NoBom = [System.Text.UTF8Encoding]::new($false)
+        [System.IO.File]::WriteAllText($tempSecretFile.FullName, $Value, $utf8NoBom)
+
+        Invoke-Gcloud @(
+            "secrets", "versions", "add", $Name,
+            "--data-file", $tempSecretFile.FullName,
+            "--project", $ProjectId
+        )
+    }
+    finally {
+        Remove-Item -LiteralPath $tempSecretFile.FullName -Force -ErrorAction SilentlyContinue
     }
 
     Invoke-Gcloud @(
