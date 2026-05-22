@@ -230,7 +230,7 @@ with st.sidebar:
 
     # Verificar configuración
     openai_ok = bool(os.getenv("OPENAI_API_KEY"))
-    bigquery_ok = bool(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+    bigquery_ok = bool(os.getenv("GOOGLE_CLOUD_PROJECT"))
     history_ok = bool(os.getenv("DB_USER") and os.getenv("DB_PASSWORD") and os.getenv("DB_HOST"))
 
     st.markdown(f"**OpenAI:** {'✅' if openai_ok else '❌'}")

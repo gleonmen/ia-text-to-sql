@@ -1,5 +1,20 @@
+substitutions:
+  _REGION: us-central1
+  _AR_REPO: langgraph-text-to-sql
+  _IMAGE_NAME: langgraph-text-to-sql-streamlit
+
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f', 'Dockerfile.prod', '-t', 'us-central1-docker.pkg.dev/ia-agentes-15/repositorio-backend-langchain-inmobiliaria/imagen-v2-backend-langchain-inmobiliaria-k:latest', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/ia-agentes-15/repositorio-backend-langchain-inmobiliaria/imagen-v2-backend-langchain-inmobiliaria-k:latest']
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -f
+      - deploy/Dockerfile.prod
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/${_IMAGE_NAME}:${BUILD_ID}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/${_IMAGE_NAME}:latest
+      - .
+
+images:
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/${_IMAGE_NAME}:${BUILD_ID}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_AR_REPO}/${_IMAGE_NAME}:latest
